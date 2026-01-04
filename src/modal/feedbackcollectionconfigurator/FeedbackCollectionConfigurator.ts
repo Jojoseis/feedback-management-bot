@@ -1,4 +1,5 @@
 import { type CacheType, LabelBuilder, type ModalSubmitInteraction, TextInputBuilder, TextInputStyle } from "discord.js";
+import nodeCron from "node-cron";
 import UserException from "../../utils/errorhandling/exceptions/UserException.ts";
 import RegexValidation from "../../utils/validation/RegexValidation.ts";
 import BaseModal from "../BaseModal.ts";
@@ -38,9 +39,9 @@ export default class FeedbackCollectionConfigurator extends BaseModal<FeedbackCo
 			throw new UserException(`'${steamAppId}' is not a valid Steam app ID`);
 		}
 
-		//if (!Cron.validate(cronPattern)) {
-		//	throw new UserException(`'${cronPattern}' is not a valid cron pattern`);
-		//} // TODO
+		if (!nodeCron.validate(cronPattern)) {
+			throw new UserException(`'${cronPattern}' is not a valid cron pattern`);
+		}
 
 		return {
 			subreddit,
