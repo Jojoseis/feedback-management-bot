@@ -11,10 +11,6 @@ export default class Environment {
 		return Environment.get("DISCORD_TOKEN");
 	}
 
-	public static getPort(): string {
-		return Environment.get("PORT");
-	}
-
 	private static get(key: string): string {
 		const value = process.env[key];
 
