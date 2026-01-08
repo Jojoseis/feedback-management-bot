@@ -1,7 +1,7 @@
 import { ApplicationIntegrationType, InteractionContextType } from "discord.js";
-import CommandGroup from "../../utils/command/CommandGroup";
-import type SubcommandGroup from "../../utils/command/SubcommandGroup";
-import FeedbackCollectionJobCommandGroup from "./feedbackcollection/FeedbackCollectionJobCommandGroup";
+import CommandGroup from "../../utils/command/CommandGroup.js";
+import type SubcommandGroup from "../../utils/command/SubcommandGroup.js";
+import FeedbackCollectionJobCommandGroup from "./feedbackcollection/FeedbackCollectionJobCommandGroup.js";
 
 export default class JobCommand extends CommandGroup {
 	public constructor() {

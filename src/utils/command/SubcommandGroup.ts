@@ -1,6 +1,6 @@
 import { type CacheType, type ChatInputCommandInteraction, SlashCommandSubcommandGroupBuilder } from "discord.js";
-import type CommandHandler from "./CommandHandler.ts";
-import type Subcommand from "./Subcommand.ts";
+import type CommandHandler from "./CommandHandler.js";
+import type Subcommand from "./Subcommand.js";
 
 export default abstract class SubcommandGroup extends SlashCommandSubcommandGroupBuilder implements CommandHandler {
 	public constructor() {

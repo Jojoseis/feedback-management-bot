@@ -1,10 +1,10 @@
 {
 	"compilerOptions": {
-		"module": "esnext",
-		"moduleResolution": "bundler",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
 		"target": "esnext",
 
-		"lib": ["esnext"],
+		"lib": ["ESNext"],
 		"types": ["node"],
 
 		"declaration": true,

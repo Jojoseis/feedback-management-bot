@@ -1,7 +1,7 @@
 import type { CacheType, ChatInputCommandInteraction } from "discord.js";
-import FeedbackCollectionConfigurator from "../../../../modal/feedbackcollectionconfigurator/FeedbackCollectionConfigurator";
-import Subcommand from "../../../../utils/command/Subcommand";
-import UserException from "../../../../utils/errorhandling/exceptions/UserException";
+import FeedbackCollectionConfigurator from "../../../../modal/feedbackcollectionconfigurator/FeedbackCollectionConfigurator.js";
+import Subcommand from "../../../../utils/command/Subcommand.js";
+import UserException from "../../../../utils/errorhandling/exceptions/UserException.js";
 
 type RedditResponse = {
 	kind: string;

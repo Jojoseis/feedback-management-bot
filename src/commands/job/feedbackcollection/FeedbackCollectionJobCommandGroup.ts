@@ -1,4 +1,4 @@
-import type Subcommand from "../../../utils/command/Subcommand.ts";
+import type Subcommand from "../../../utils/command/Subcommand.js";
 import SubcommandGroup from "../../../utils/command/SubcommandGroup.js";
 import CreateFeedbackCollectionJobCommand from "./create/CreateFeedbackCollectionJobCommand.js";
 

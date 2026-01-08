@@ -1,8 +1,8 @@
 import { type CacheType, LabelBuilder, type ModalSubmitInteraction, TextInputBuilder, TextInputStyle } from "discord.js";
 import nodeCron from "node-cron";
-import UserException from "../../utils/errorhandling/exceptions/UserException";
-import RegexValidation from "../../utils/validation/RegexValidation";
-import BaseModal from "../BaseModal";
+import UserException from "../../utils/errorhandling/exceptions/UserException.js";
+import RegexValidation from "../../utils/validation/RegexValidation.js";
+import BaseModal from "../BaseModal.js";
 
 export type FeedbackCollectionConfigurationData = {
 	subreddit: string;
@@ -61,7 +61,7 @@ class RedditComponent extends LabelBuilder {
 }
 
 class RedditInput extends TextInputBuilder {
-	public static readonly ID = "subreddit";
+	public static readonly ID = "subreddit.js";
 
 	public constructor() {
 		super();
@@ -81,7 +81,7 @@ class SteamComponent extends LabelBuilder {
 }
 
 class SteamInput extends TextInputBuilder {
-	public static readonly ID = "steamAppId";
+	public static readonly ID = "steamAppId.js";
 
 	public constructor() {
 		super();
@@ -101,7 +101,7 @@ class CronComponent extends LabelBuilder {
 }
 
 class CronInput extends TextInputBuilder {
-	public static readonly ID = "cronPattern";
+	public static readonly ID = "cronPattern.js";
 
 	public constructor() {
 		super();

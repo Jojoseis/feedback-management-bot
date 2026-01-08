@@ -1,6 +1,6 @@
 import type { CacheType, ChatInputCommandInteraction } from "discord.js";
-import Command from "./Command";
-import type SubcommandGroup from "./SubcommandGroup";
+import Command from "./Command.js";
+import type SubcommandGroup from "./SubcommandGroup.js";
 
 export default abstract class CommandGroup extends Command {
 	public constructor() {

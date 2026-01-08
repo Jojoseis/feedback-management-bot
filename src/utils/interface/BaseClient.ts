@@ -1,5 +1,5 @@
 import { Client, type ClientOptions, Events } from "discord.js";
-import Environment from "../Environment";
+import Environment from "../Environment.js";
 
 export default class BaseClient extends Client {
 	public constructor(options: ClientOptions) {

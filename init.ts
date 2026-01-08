@@ -1,5 +1,5 @@
-import "dotenv/config";
-import CommandInitializer from "./src/commands/CommandInitializer";
+import "dotenv/config.js";
+import CommandInitializer from "./src/commands/CommandInitializer.js";
 
 console.log("Initializing commands...");
 await new CommandInitializer().init();

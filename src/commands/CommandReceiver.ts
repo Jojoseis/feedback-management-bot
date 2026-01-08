@@ -1,9 +1,9 @@
 import { Events, GatewayIntentBits } from "discord.js";
-import UserException from "../utils/errorhandling/exceptions/UserException";
-import BaseClient from "../utils/interface/BaseClient";
-import Message from "../utils/interface/reply/Message";
-import Logger from "../utils/logging/Logger";
-import Commands from "./Commands";
+import UserException from "../utils/errorhandling/exceptions/UserException.js";
+import BaseClient from "../utils/interface/BaseClient.js";
+import Message from "../utils/interface/reply/Message.js";
+import Logger from "../utils/logging/Logger.js";
+import Commands from "./Commands.js";
 
 export default class CommandReceiver extends BaseClient {
 	public constructor() {
