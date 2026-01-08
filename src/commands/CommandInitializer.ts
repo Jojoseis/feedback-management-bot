@@ -1,5 +1,5 @@
-import CommandEndpoint from "../utils/interface/CommandEndpoint.ts";
-import Commands from "./Commands.ts";
+import CommandEndpoint from "../utils/interface/CommandEndpoint";
+import Commands from "./Commands";
 
 export default class CommandInitializer {
 	public async init() {

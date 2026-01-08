@@ -1,5 +1,5 @@
-import type Command from "../utils/command/Command.ts";
-import JobCommand from "./job/JobCommand.ts";
+import type Command from "../utils/command/Command";
+import JobCommand from "./job/JobCommand";
 
 const commands: Array<Command> = [new JobCommand()];
 export default commands;

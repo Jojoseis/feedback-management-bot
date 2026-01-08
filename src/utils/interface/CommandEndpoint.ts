@@ -1,6 +1,6 @@
 import { Routes, type SlashCommandBuilder } from "discord.js";
-import Environment from "../Environment.ts";
-import RestEndpoint from "./RestEndpoint.ts";
+import Environment from "../Environment";
+import RestEndpoint from "./RestEndpoint";
 
 export default class CommandEndpoint {
 	private endpoint = new RestEndpoint();

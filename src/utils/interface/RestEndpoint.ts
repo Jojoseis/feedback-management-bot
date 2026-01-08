@@ -1,5 +1,5 @@
 import { REST } from "discord.js";
-import Environment from "../Environment.ts";
+import Environment from "../Environment";
 
 export default class RestEndpoint extends REST {
 	public constructor() {
