@@ -6,6 +6,8 @@
 	"main": "app.ts",
 	"type": "module",
 	"scripts": {
+		"build": "npm run lint && tsc",
+		"lint": "biome check . --write && biome format . --write",
 		"start": "node app.ts",
 		"init": "nodemon init.ts",
 		"dev": "nodemon app.ts"
