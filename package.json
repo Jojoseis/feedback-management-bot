@@ -3,13 +3,14 @@
 	"version": "0.0.1",
 	"description": "A discord bot to streamline player feedback collection from multiple social media platforms",
 	"author": "https://github.com/Jojoseis",
-	"main": "app.ts",
+	"main": "dist/app.js",
 	"type": "module",
 	"scripts": {
 		"build": "npm run lint && tsc",
 		"lint": "biome check . --write && biome format . --write",
-		"start": "node app.ts",
-		"init": "nodemon init.ts",
+		"init": "node dist/init.js",
+		"start": "node dist/app.js",
+		"dev-init": "nodemon init.ts",
 		"dev": "nodemon app.ts"
 	},
 	"dependencies": {
