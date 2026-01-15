@@ -13,7 +13,7 @@ export default class JobCommand extends CommandGroup {
 		this.setContexts(InteractionContextType.Guild);
 	}
 
-	public getSubcommandGroups(): Array<SubcommandGroup> {
+	public getSubcommands(): Array<SubcommandGroup> {
 		return [new FeedbackCollectionJobCommandGroup()];
 	}
 }
