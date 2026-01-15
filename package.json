@@ -11,7 +11,7 @@
 		"init": "node dist/init.js",
 		"start": "node dist/app.js",
 		"dev-init": "nodemon init.ts",
-		"dev": "nodemon app.ts"
+		"dev-start": "nodemon app.ts"
 	},
 	"dependencies": {
 		"discord-interactions": "^4.4.0",
