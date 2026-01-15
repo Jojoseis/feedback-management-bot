@@ -7,17 +7,25 @@ import BaseModal from "../BaseModal.js";
 export type FeedbackCollectionConfigurationData = {
 	subreddit: string;
 	steamAppId: string;
-	cronPattern: string;
+	cronPattern?: string;
+	lookbackTime?: string;
 };
 
 export default class FeedbackCollectionConfigurator extends BaseModal<FeedbackCollectionConfigurationData> {
-	public constructor() {
+	private isJob: boolean;
+
+	public constructor(isJob: boolean) {
 		super();
+		this.isJob = isJob;
 		this.setCustomId("feedbackCollectionConfigurator");
 		this.setTitle("Feedback Collection Configurator");
 		this.addLabelComponents(new RedditComponent());
 		this.addLabelComponents(new SteamComponent());
-		this.addLabelComponents(new CronComponent());
+		if (isJob) {
+			this.addLabelComponents(new CronComponent());
+		} else {
+			this.addLabelComponents(new LookbackTimeComponent());
+		}
 	}
 
 	protected getSubmitConfiguration() {
@@ -26,10 +34,9 @@ export default class FeedbackCollectionConfigurator extends BaseModal<FeedbackCo
 		};
 	}
 
-	protected parseData(modalData: ModalSubmitInteraction<CacheType>) {
+	protected parseData(modalData: ModalSubmitInteraction<CacheType>): FeedbackCollectionConfigurationData {
 		const subreddit = modalData.fields.getTextInputValue(RedditInput.ID);
 		const steamAppId = modalData.fields.getTextInputValue(SteamInput.ID);
-		const cronPattern = modalData.fields.getTextInputValue(CronInput.ID);
 
 		if (!RegexValidation.isSubreddit(subreddit)) {
 			throw new UserException(`'${subreddit}' is not a valid subreddit format`);
@@ -39,15 +46,30 @@ export default class FeedbackCollectionConfigurator extends BaseModal<FeedbackCo
 			throw new UserException(`'${steamAppId}' is not a valid Steam app ID`);
 		}
 
-		if (!nodeCron.validate(cronPattern)) {
-			throw new UserException(`'${cronPattern}' is not a valid cron pattern`);
+		const data: FeedbackCollectionConfigurationData = {
+			subreddit: subreddit,
+			steamAppId: steamAppId,
+		};
+
+		if (this.isJob) {
+			const cronPattern = modalData.fields.getTextInputValue(CronInput.ID);
+
+			if (!nodeCron.validate(cronPattern)) {
+				throw new UserException(`'${cronPattern}' is not a valid cron pattern`);
+			}
+
+			data.cronPattern = cronPattern;
+		} else {
+			const lookbackTime = modalData.fields.getTextInputValue(LookbackTimeInput.ID);
+
+			if (!RegexValidation.isInteger(lookbackTime)) {
+				throw new UserException(`'${lookbackTime}' is not a valid lookback time`);
+			}
+
+			data.lookbackTime = lookbackTime;
 		}
 
-		return {
-			subreddit,
-			steamAppId,
-			cronPattern,
-		};
+		return data;
 	}
 }
 
@@ -108,5 +130,25 @@ class CronInput extends TextInputBuilder {
 		this.setCustomId(CronInput.ID);
 		this.setStyle(TextInputStyle.Short);
 		this.setPlaceholder("0 0 * * 1 eg. every Monday at midnight");
+	}
+}
+
+class LookbackTimeComponent extends LabelBuilder {
+	public constructor() {
+		super();
+		this.setLabel("Lookback Time");
+		this.setDescription("How far to look back in time for feedback collection.");
+		this.setTextInputComponent(new LookbackTimeInput());
+	}
+}
+
+class LookbackTimeInput extends TextInputBuilder {
+	public static readonly ID = "lookbackTime.js";
+
+	public constructor() {
+		super();
+		this.setCustomId(LookbackTimeInput.ID);
+		this.setStyle(TextInputStyle.Short);
+		this.setPlaceholder("7 for a full week");
 	}
 }
